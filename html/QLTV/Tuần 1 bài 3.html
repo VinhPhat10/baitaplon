@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Image Slideshow</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            background-color: #f0f0f0;
+        }
+        .slideshow-container {
+            position: relative;
+            max-width: 1000px;
+            margin: auto;
+            background-color: #333;
+            padding: 20px;
+            border-radius: 10px;
+        }
+        .slides {
+            display: none;
+        }
+        img {
+            width: 100%;
+            height: auto;
+            border-radius: 10px;
+        }
+        .thumb-container {
+            display: flex;
+            justify-content: center;
+            margin-top: 20px;
+        }
+        .thumb-container img {
+            width: 100px;
+            height: auto;
+            margin: 5px;
+            cursor: pointer;
+            border: 2px solid #333;
+        }
+        .thumb-container img:hover {
+            border: 2px solid #ddd;
+        }
+        .buttons {
+            margin-top: 20px;
+        }
+        .buttons button {
+            padding: 10px 20px;
+            margin: 5px;
+            cursor: pointer;
+            background-color: #444;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            transition: background-color 0.3s ease;
+        }
+        .buttons button:hover {
+            background-color: #555;
+        }
+    </style>
+</head>
+<body>
+    <script>
+        // Đoạn mã JavaScript tự động trình chiếu
+        let slideIndex = 0;
+        let slideshowInterval;
+
+        function showSlide(index) {
+            let slides = document.getElementsByClassName("slides");
+            if (index >= slides.length) {
+                slideIndex = 0;
+            } else if (index < 0) {
+                slideIndex = slides.length - 1;
+            } else {
+                slideIndex = index;
+            }
+
+            for (let i = 0; i < slides.length; i++) {
+                slides[i].style.display = "none";
+            }
+
+            slides[slideIndex].style.display = "block";
+        }
+
+        function nextSlide(n) {
+            showSlide(slideIndex + n);
+        }
+
+        function goToSlide(n) {
+            showSlide(n - 1);
+        }
+
+        function startSlideshow() {
+            showSlide(slideIndex);
+            slideshowInterval = setInterval(function() {
+                nextSlide(1);
+            }, 2000ms); // Thay đổi slide mỗi 2 giây
+        }
+
+        function stopSlideshow() {
+            clearInterval(slideshowInterval);
+        }
+    </script>
+</body>
+    <h1>Welcome to My Slideshow</h1>
+    
+    <div class="slideshow-container">
+        <div class="slides" id="slide1">
+            <img src="T:\19513901_Nguyễn Phạm Vĩnh Phát_Tuan01\Images\Tuan01\slide1.jpg" alt="">
+        </div>
+        <div class="slides" id="slide2">
+            <img src="T:\19513901_Nguyễn Phạm Vĩnh Phát_Tuan01\Images\Tuan01\slide2.jpg" alt="T:\19513901_Nguyễn Phạm Vĩnh Phát_Tuan01\Images\Tuan01\slide2.jpg">
+        </div>
+        <div class="slides" id="slide3">
+            <img src="T:\19513901_Nguyễn Phạm Vĩnh Phát_Tuan01\Images\Tuan01\slide3.jpg" alt="T:\19513901_Nguyễn Phạm Vĩnh Phát_Tuan01\Images\Tuan01\Slide3.jpg">
+        </div>
+        <div class="slides" id="slide4">
+            <img src="T:\19513901_Nguyễn Phạm Vĩnh Phát_Tuan01\Images\Tuan01\slide4.jpg" alt="T:\19513901_Nguyễn Phạm Vĩnh Phát_Tuan01\Images\Tuan01\Slide4.jpg">
+        </div>
+        <div class="slides" id="slide5">
+            <img src="T:\19513901_Nguyễn Phạm Vĩnh Phát_Tuan01\Images\Tuan01\slide5.jpg" alt="T:\19513901_Nguyễn Phạm Vĩnh Phát_Tuan01\Images\Tuan01\Slide5.jpg">
+        </div>
+        <div class="slides" id="slide6">
+            <img src="T:\19513901_Nguyễn Phạm Vĩnh Phát_Tuan01\Images\Tuan01\slide6.jpg" alt="T:\19513901_Nguyễn Phạm Vĩnh Phát_Tuan01\Images\Tuan01\Slide6.jpg">
+        </div>
+
+        <div class="buttons">
+            <button onclick="goToSlide(0)">Home</button>
+            <button onclick="goToSlide(1)">Start</button>
+            <button onclick="nextSlide(-1)">Back</button>
+            <button onclick="nextSlide(1)">Forward</button>
+            
+        </div>
+    </div>
+
+    <div class="thumb-container">
+        <img src="T:\19513901_Nguyễn Phạm Vĩnh Phát_Tuan01\Images\Tuan01\thumb1.jpg" alt="Thumb 1" onclick="goToSlide(1)">
+        <img src="T:\19513901_Nguyễn Phạm Vĩnh Phát_Tuan01\Images\Tuan01\thumb2.jpg" alt="Thumb 2" onclick="goToSlide(2)">
+        <img src="T:\19513901_Nguyễn Phạm Vĩnh Phát_Tuan01\Images\Tuan01\thumb3.jpg" alt="Thumb 3" onclick="goToSlide(3)">
+        <img src="T:\19513901_Nguyễn Phạm Vĩnh Phát_Tuan01\Images\Tuan01\thumb4.jpg" alt="Thumb 4" onclick="goToSlide(4)">
+        <img src="T:\19513901_Nguyễn Phạm Vĩnh Phát_Tuan01\Images\Tuan01\thumb5.jpg" alt="Thumb 5" onclick="goToSlide(5)">
+        <img src="T:\19513901_Nguyễn Phạm Vĩnh Phát_Tuan01\Images\Tuan01\thumb6.jpg" alt="Thumb 6" onclick="goToSlide(6)">
+    </div>
+
+    <script>
+        
+        let slideIndex = 0;
+        showSlide(slideIndex);
+
+        function showSlide(index) {
+            let slides = document.getElementsByClassName("slides");
+            if (index >= slides.length) {
+                slideIndex = 0;
+            } else if (index < 0) {
+                slideIndex = slides.length - 1;
+            } else {
+                slideIndex = index;
+            }
+
+            for (let i = 0; i < slides.length; i++) {
+                slides[i].style.display = "none";
+            }
+
+            slides[slideIndex].style.display = "block";
+        }
+
+        function nextSlide(n) {
+            showSlide(slideIndex + n);
+        }
+
+        function goToSlide(n) {
+            showSlide(n - 1);
+        }
+    </script>
+    
+    
+
+</body>
+</html>
